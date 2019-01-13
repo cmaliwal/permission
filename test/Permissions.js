@@ -10,8 +10,8 @@ contract('Permissions', function(accounts) {
     }).then(function(receipt) {
       assert.equal(receipt.logs.length, 1, 'triggers one event');
       assert.equal(receipt.logs[0].event, 'PermissionGrant', 'should be the "PermissionGrant" event');
-      assert.equal(receipt.logs[0].args._from, accounts[0], 'logs the account the tokens are transferred from');
-      assert.equal(receipt.logs[0].args._to, accounts[1], 'logs the account the tokens are transferred to');
+      assert.equal(receipt.logs[0].args._from, accounts[0], 'logs the account who give the permission');
+      assert.equal(receipt.logs[0].args._to, accounts[1], 'logs the account who get the permission');
       return contractInstance.getPermission();
     }).then(function(address) {
       assert.equal(address, accounts[1], 'get permissions');
